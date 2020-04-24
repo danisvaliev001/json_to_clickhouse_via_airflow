@@ -1,0 +1,51 @@
+version: "3.7"
+services:
+  # clickhouse:
+  clickhouse-server:
+    image: yandex/clickhouse-server
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+      - "9009:9009"
+    ulimits:
+      nofile:
+        soft: "262144"
+        hard: "262144"
+    volumes:
+      - ./raw/:/var/lib/clickhouse/user_files/raw/
+  # airflow:
+  postgres:
+    image: postgres:9.6
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+  webserver:
+    image: puckel/docker-airflow:1.10.9
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      - LOAD_EX=n
+      - EXECUTOR=Local
+      - AIRFLOW_CONN_CLICKHOUSE_DEFAULT=http://default:@clickhouse-server:9000
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    volumes:
+      - ./airflow/requirements.txt:/requirements.txt
+      - ./airflow/dags:/usr/local/airflow/dags
+      - ./airflow/scripts:/usr/local/airflow/scripts
+    ports:
+      - "8080:8080"
+    command: webserver
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid ]"]
+      interval: 30s
+      timeout: 30s
+      retries: 3

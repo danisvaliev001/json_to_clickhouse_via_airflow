@@ -1,1 +1,0 @@
-airflow-clickhouse-plugin==0.5.2

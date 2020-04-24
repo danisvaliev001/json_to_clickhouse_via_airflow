@@ -10,6 +10,6 @@ This project reproduces an example of using airflow to put raw data from the JSO
 2. Open web-interface in browser:  
 http://localhost:8080/admin/  
 
-3. Start scheduler  
+3. Start scheduler:  
 
 ![start_scheduler](https://github.com/danisvaliev001/json_to_clickhouse_via_airflow/blob/master/readme01.png)  

@@ -1,4 +1,4 @@
-CREATE TABLE uchiru.logs (
+CREATE TABLE IF NOT EXISTS USERS.sessions (
     `ts` DateTime('Europe/Moscow'),
     `userId` Nullable(String),
     `sessionId` Nullable(Int8),

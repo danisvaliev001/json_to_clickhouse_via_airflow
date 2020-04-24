@@ -16,15 +16,15 @@ with open('/usr/local/airflow/scripts/create_table_02.sql', 'r') as file:
   file.close()
 
 def raw_to_table():
-  ch_hook.run('CREATE DATABASE IF NOT EXISTS uchiru')
-  ch_hook.run('DROP TABLE IF EXISTS uchiru.logs_raw')
+  ch_hook.run('CREATE DATABASE IF NOT EXISTS USERS')
+  ch_hook.run('DROP TABLE IF EXISTS USERS.sessions_raw')
   ch_hook.run(query_create_table_01)
   ch_hook.run(query_fill_table_01)
 
 def preprocess_table():
-  # ch_hook.run('DROP TABLE IF EXISTS uchiru.logs')   # this useful only for debugging
+  # ch_hook.run('DROP TABLE IF EXISTS USERS.sessions')   # this useful only for debugging
   ch_hook.run(query_create_table_02)
-  ch_hook.run('INSERT INTO uchiru.logs SELECT * FROM uchiru.logs_raw')
+  ch_hook.run('INSERT INTO USERS.sessions SELECT * FROM USERS.sessions_raw')
 
 with DAG(
   dag_id='json_to_clickhouse',

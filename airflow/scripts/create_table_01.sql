@@ -1,4 +1,4 @@
-CREATE TABLE uchiru.logs_raw (
+CREATE TABLE USERS.sessions_raw (
     `ts` Nullable(Int8),
     `userId` Nullable(String),
     `sessionId` Nullable(Int8),

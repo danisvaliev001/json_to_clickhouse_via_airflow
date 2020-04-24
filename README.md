@@ -12,4 +12,5 @@ http://localhost:8080/admin/
 
 3. Start scheduler:  
 
-![start_scheduler](https://imgur.com/a/7UY7Vj3)  
+<img width="1440" alt="airflow_scheduler" src="https://user-images.githubusercontent.com/62111184/80230874-335b7880-865b-11ea-8607-8b70fff59e6a.png">
+

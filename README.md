@@ -2,12 +2,12 @@
 This project reproduces an example of using airflow to put raw data from the JSON file to ClickHouse. The result is data ready for analytics work.
 
 ## How to use:
-1. Create **raw** directory and put the data-file there called **event-data.json**
+1. Create **raw** directory and put the data-file there called **event-data.json**. You need to add this file to this directory every day. The file will be removed automatically after data will be added to the final table.  
 
 1. Define your table scheme in .sql files in `./airflow/scripts/*.sql`.  
 Global ETL scheme:  
 JSON ==> table01 ==> table02  
-table02 is ready for use for analytics.  
+table02 is ready for use for analytics, this is the final table.    
 
 1. At the command prompt, start docker-compose:  
 `docker-compose up -d`  

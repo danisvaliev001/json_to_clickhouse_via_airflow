@@ -33,6 +33,7 @@ services:
       - LOAD_EX=n
       - EXECUTOR=Local
       - AIRFLOW_CONN_CLICKHOUSE_DEFAULT=http://default:@clickhouse-server:9000
+      - AIRFLOW_CONN_DOCKER_DEFAULT=http://default:@clickhouse-server:9000
     logging:
       options:
         max-size: 10m
@@ -41,6 +42,7 @@ services:
       - ./airflow/requirements.txt:/requirements.txt
       - ./airflow/dags:/usr/local/airflow/dags
       - ./airflow/scripts:/usr/local/airflow/scripts
+      - ./raw/:/var/lib/raw   # needed for delete JSON-file from clickhouse-server
     ports:
       - "8080:8080"
     command: webserver

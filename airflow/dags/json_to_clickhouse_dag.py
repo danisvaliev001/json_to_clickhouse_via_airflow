@@ -1,7 +1,6 @@
 from airflow import DAG
 from airflow.hooks.clickhouse_hook import ClickHouseHook
 from airflow.operators.python_operator import PythonOperator
-from airflow.operators.bash_operator import BashOperator
 from airflow.utils.dates import days_ago
 import os
 

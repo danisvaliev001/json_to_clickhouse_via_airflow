@@ -33,7 +33,6 @@ services:
       - LOAD_EX=n
       - EXECUTOR=Local
       - AIRFLOW_CONN_CLICKHOUSE_DEFAULT=http://default:@clickhouse-server:9000
-      - AIRFLOW_CONN_DOCKER_DEFAULT=http://default:@clickhouse-server:9000
     logging:
       options:
         max-size: 10m

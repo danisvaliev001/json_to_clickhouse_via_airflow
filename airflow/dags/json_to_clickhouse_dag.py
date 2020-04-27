@@ -37,7 +37,7 @@ def delete_json_file():
 
 with DAG(
   dag_id='json_to_clickhouse_dag',
-  start_date=days_ago(2),
+  start_date=days_ago(1),
 ) as dag:
 
   t1 = PythonOperator(
